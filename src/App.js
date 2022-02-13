@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import React from 'react';
+
+import { TabsComponent } from './components/tabs/tabs';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      heroData: [],
+      dataLoaded: false
+    };
+  }
+
+  componentDidMount() {
+    const newHeroArray = [];
+    fetch('https://tppublic.blob.core.windows.net/test-data/super-heroes.json')
+      .then((res) => res.json())
+      .then((data) => {
+        data.map((item) => {
+          const newItem = {
+            id: item.id,
+            superHeroName: item.name,
+            realName: item.biography['full-name'],
+            imageUrl: item.image.url
+          };
+          return newHeroArray.push(newItem);
+        });
+        this.setState({
+          heroData: newHeroArray,
+          dataLoaded: true
+        });
+      });
+  }
+
+  render() {
+    const { dataLoaded, heroData } = this.state;
+    if (!dataLoaded) return <div>Loading...</div>;
+    return (
+      <div className='App'>
+        <TabsComponent heroData={heroData} />
+      </div>
+    );
+  }
 }
 
 export default App;

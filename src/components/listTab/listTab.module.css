@@ -1,0 +1,10 @@
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroList {
+  padding: 25px;
+  font-family: 'Supermercado One', cursive;
+}

@@ -1,0 +1,40 @@
+.tabContainer {
+  width: 100vw;
+}
+
+.tabHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 2px solid #008000;
+  list-style: none;
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
+
+.currentTab {
+  border: 1px solid #008000;
+  border-bottom: 0;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  color: #008000;
+}
+
+.currentTab:hover {
+  border-color: #0000ff;
+}
+
+.tabButton {
+  margin: 0 5px;
+  padding: 3px;
+}
+
+.tabButton:hover {
+  cursor: pointer;
+  color: #0000ff;
+}
+
+.tabButton:active {
+  color: #d80505;
+}
