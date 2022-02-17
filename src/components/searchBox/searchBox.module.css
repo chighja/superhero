@@ -1,0 +1,8 @@
+.searchBox {
+  font-family: monospace;
+  color: #0000ff;
+}
+
+.searchBox::placeholder {
+  color: #008000;
+}
